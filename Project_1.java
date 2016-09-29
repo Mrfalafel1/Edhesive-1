@@ -1,3 +1,4 @@
+
  import java.io.*;
  import static java.lang.System.*;
  import java.util.Random;
@@ -9,14 +10,17 @@
 
       public static void main (String str[]) throws IOException {
         Scanner scan = new Scanner(System.in);
-        String name;
-        String plusminus;
+        String name = "null";
+        String plusminus = "null";
         Random rand = new Random();
-        String[] feedbackpos = {"Great Job!", "Fantastic!", "You're so smart!"};
-        String[] feedbackneg = {"Try again.", "Why would you put that?!", "Are you kidding me??"};
+        String[] feedbackpos = {"Great job ", "Fantastic ", "You're so smart "};
+        String[] feedbackneg = {"You need tutoring ", "WRONG ANSWER ", "Are you kidding me "};
+        String feedback = "null";
+        int score = 0;
+        int lives = 3;
         
-        boolean problem = true;
         
+
         //Asking for name
         int confirmName = 1;
         NAMING:
@@ -43,11 +47,14 @@
                   
          //Starting problems
         PROBLEM:         
-        while (problem == true)
+        while (lives > 0)
         {
+        //Numbers
          double x = (Math.round(Math.random()*1001))/100.00;
          double y = (Math.round(Math.random()*1001))/100.00;
+         //Operator selection
          int operator = rand.nextInt(2);
+         
          if (operator == 1)
          {
            plusminus = "+";
@@ -56,17 +63,57 @@
          {
            plusminus = "-";
          }
-         System.out.println("Please input the answer of: " + x + " " + plusminus + " " + y); 
+         //Asking Question
+         System.out.println("\nPlease input the answer of: " + x + " " + plusminus + " " + y); 
          double ans = scan.nextDouble();
+         
+         //Checking answer if problem is addition
           if (operator == 1)
-          {
-            //make the x and y round because of rounding error 
-            if (ans == (x+y))
+          { 
+            if (ans == (((double)(Math.round(x*1000)+Math.round(y*1000)))/1000))
             {
-              
+              feedback = feedbackpos[rand.nextInt(feedbackpos.length)];
+              System.out.println(feedback + name + ".");
+              score++;
+              System.out.println("\n\t> Your score is: " + score);
+              System.out.println("\t> You can only get " + lives + " more answers wrong.");
+            }
+            else
+            {
+              feedback = feedbackneg[rand.nextInt(feedbackneg.length)];
+              System.out.println(feedback + name + ".");
+              score--;
+              System.out.println("\n\t> Your score is: " + score);
+              lives--;
+              System.out.println("\t> Sorry you lost a life. You can only get " + lives + " more answers wrong.");
             }
           }
-        }
-        
+          
+          //Checking answer if problem is subtraction.
+          if (operator == 0) 
+          {
+            if (ans == (((double)(Math.round(x*1000)-Math.round(y*1000)))/1000))
+            {
+              feedback = feedbackpos[rand.nextInt(feedbackneg.length)];
+              System.out.println(feedback + name + "." );
+              score++;
+              System.out.println("\n\t> Your score is: " + score);
+              System.out.println("\t> You can only get " + lives + " more answers wrong.");
+            }
+            else
+            {
+              feedback = feedbackneg[rand.nextInt(feedbackneg.length)];
+              System.out.println(feedback + name + ".");
+              score--;
+              System.out.println("\n\t> Your score is: " + score);
+              lives--;
+              System.out.println("\t> Sorry you lost a life. You can only get " + lives + " more answers wrong.");
+            }
+          }
+        } //End of problem loop
+          //Losing Message
+          score--;
+          System.out.println("\n\tSorry you ran out of lives " + name + "! Your score was " + score + ". Try again to see if you can beat it.");
+        scan.close();
       }
  }
