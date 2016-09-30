@@ -13,7 +13,7 @@
         String plusminus = "null";
         Random rand = new Random();
         String[] feedbackpos = {"Great job ", "Fantastic ", "You're so smart ", "That was amazing ", "I can't believe you got that right "};
-        String[] feedbackneg = {"You need tutoring ", "WRONG ANSWER ", "Are you kidding me " + "Are you really that dumb " + "Go to school more "};
+        String[] feedbackneg = {"You need tutoring ", "WRONG ANSWER ", "Are you kidding me ", "Are you really that dumb ", "Go to school more "};
         String feedback = "null";
         int score = 0;
         int lives = 3;
