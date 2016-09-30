@@ -44,7 +44,8 @@
             }
           }
                   
-         //Starting problems         
+         //Starting problems
+        NEW:
         while (lives > 0)
         {
         //Numbers
@@ -62,6 +63,9 @@
            plusminus = "-";
          }
          //Asking Question
+         PROBLEM:
+        	 while (lives > 0)
+        	 {
          System.out.println("\nPlease input the answer of: " + x + " " + plusminus + " " + y); 
          double ans = scan.nextDouble();
          
@@ -75,6 +79,7 @@
               score++;
               System.out.println("\n\t> Your score is: " + score);
               System.out.println("\t> You can only get " + lives + " more answers wrong.");
+              continue NEW;
             }
             else
             {
@@ -84,6 +89,7 @@
               System.out.println("\n\t> Your score is: " + score);
               lives--;
               System.out.println("\t> Sorry you lost a life. You can only get " + lives + " more answers wrong.");
+              continue PROBLEM;
             }
           }
           
@@ -97,6 +103,7 @@
               score++;
               System.out.println("\n\t> Your score is: " + score);
               System.out.println("\t> You can only get " + lives + " more answers wrong.");
+              continue NEW;
             }
             else
             {
@@ -106,9 +113,11 @@
               System.out.println("\n\t> Your score is: " + score);
               lives--;
               System.out.println("\t> Sorry you lost a life. You can only get " + lives + " more answers wrong.");
+              continue PROBLEM;
             }
           }
-        } //End of problem loop
+        }
+        }//End of problem loop
           //Losing Message
           System.out.println("\n\tSorry you ran out of lives " + name + "! Your score was " + score + ". Try again to see if you can beat it.");
         scan.close();
