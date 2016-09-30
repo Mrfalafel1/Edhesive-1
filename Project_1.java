@@ -1,6 +1,5 @@
 
  import java.io.*;
- import static java.lang.System.*;
  import java.util.Random;
  import java.util.Scanner;
  import java.lang.Math;
@@ -13,8 +12,8 @@
         String name = "null";
         String plusminus = "null";
         Random rand = new Random();
-        String[] feedbackpos = {"Great job ", "Fantastic ", "You're so smart "};
-        String[] feedbackneg = {"You need tutoring ", "WRONG ANSWER ", "Are you kidding me "};
+        String[] feedbackpos = {"Great job ", "Fantastic ", "You're so smart ", "That was amazing ", "I can't believe you got that right "};
+        String[] feedbackneg = {"You need tutoring ", "WRONG ANSWER ", "Are you kidding me " + "Are you really that dumb " + "Go to school more "};
         String feedback = "null";
         int score = 0;
         int lives = 3;
@@ -45,8 +44,7 @@
             }
           }
                   
-         //Starting problems
-        PROBLEM:         
+         //Starting problems         
         while (lives > 0)
         {
         //Numbers
@@ -112,7 +110,6 @@
           }
         } //End of problem loop
           //Losing Message
-          score--;
           System.out.println("\n\tSorry you ran out of lives " + name + "! Your score was " + score + ". Try again to see if you can beat it.");
         scan.close();
       }
