@@ -110,10 +110,13 @@
               feedback = feedbackneg[rand.nextInt(feedbackneg.length)];
               System.out.println(feedback + name + ".");
               score--;
-              System.out.println("\n\t> Your score is: " + score);
               lives--;
+              if (lives > 0)
+              {
+              System.out.println("\n\t> Your score is: " + score);
               System.out.println("\t> Sorry you lost a life. You can only get " + lives + " more answers wrong.");
               continue PROBLEM;
+              }
             }
           }
         }
